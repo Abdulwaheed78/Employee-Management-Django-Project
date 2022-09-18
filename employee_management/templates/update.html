@@ -1,0 +1,55 @@
+{%extends 'base.html'%}
+
+{%block title%}Add Employee{%endblock%}
+
+{%block content%}
+
+
+<div class="card mt-5" style="margin-right:300px; margin-left:300px">
+  <div class="container  text-danger">
+    <center>
+      <h3 class="mt-2">Edit Employee Details</h3>
+    </center>
+    <hr>
+  </div>
+  
+  <div class="card-body">
+    <form action="/edit/update/{{prod.id}}" method="POST">
+      {%csrf_token%}
+      <input class="form-control " type="text" name="name" required value="{{prod.name}}" placeholder="Name">
+      <input class="form-control mt-3 " type="text" name="edu" required value="{{prod.edu}}"
+        placeholder="Highest Education with stream name">
+      <input class="form-control mt-3" type="text" name="prol" required value="{{prod.prol}}"
+        placeholder="Programming Languages">
+      <input class="form-control mt-3" type="number" name="age" required value="{{prod.age}}" placeholder="Age">
+      <select class="form-select mt-3" name="gender" aria-label="Default select example" required
+        placeholder="Select Gender">
+        <option value="{{prod.gender|capfirst}}">{{prod.gender|capfirst}}</option>
+        <option value="male" name="male">Male</option>
+        <option value="female" name="female">Female</option>
+        <option value="others" name="others">Others</option>
+      </select>
+      <input class="form-control mt-3" type="number" name="exsalary" required value="{{prod.exsalary}}"
+        placeholder="  Expected Salary">
+      <select class="form-select mt-3" name="deptname" aria-label="Default select example" required
+        placeholder="Select Department Id">
+        <option value="{{prod.deptname}}">{{prod.deptname}}</option>
+        {% for z in z %}
+        <option value="{{z.name}}" name="deptname" class="form-control">{{z.name}}</option>
+        {% endfor %}
+      </select>
+      <input class="form-control mt-3" type="text" name="about" required value="{{prod.about}}"
+        placeholder="About Employee">
+      {% if prod.image %}
+         <img src="{{prod.image.url}}" alt="Not found" class="rounded float-start mt-2 mb-2 text-center" height="60px" width="60px">
+      {% endif %}
+      <input class="form-control mt-3"  type="file" name="image">
+      <button type="submit" class="btn btn-danger mt-3">Submit</button>
+      <a href="/" class="btn btn-primary mt-3">Back</a>
+    </form>
+  </div>
+</div>
+</div>
+
+
+{%endblock%}

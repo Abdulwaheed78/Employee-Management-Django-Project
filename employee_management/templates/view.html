@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+
+{%block title%}User Details{%endblock%}
+{%block content%}
+<div class="row">
+    <div class="col-lg"></div>
+    <div class="col-lg">
+        <div class="card mt-5" style="width:400px; height: 650px;">
+            <img class="card-img-top"
+                src="{{data.image.url}}" width="500px" height="300px"    alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title"> Name:{{data.name}}</h4>
+                <p class="card-text">
+                    <h6>Age:{{data.age}}</h6>
+                    <h6>Highest Education:{{data.edu}}</h6>
+                    <h6>Programming Languages:{{data.prol}}</h6>
+                    <h6>Gender:{{data.gender}}</h6>
+                    <h6>Expected Salary:{{data.exsalary}}</h6>
+                    <h6>Profession:{{data.deptname}}</h6>
+                    <h6>About:{{data.about}}</h6>
+                </p>
+                <a href="/" class="btn btn-primary mt-2">Back</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg"></div>
+</div>
+
+{%endblock%}

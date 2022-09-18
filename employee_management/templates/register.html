@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+
+{%block title%}Login Here{%endblock%}
+{%block content%}
+<center>
+  <div class="mt-5">
+    <div class="card" style="width: 35%;">
+      <div class="card-header"><b>Register New Admin</b></div>
+      <div class="card-body">
+        <form action="#" method="post" autocomplete="off">
+          {% csrf_token %}
+          <input type="text" name="fname" class="form-control mt-3" required placeholder="First Name">
+          <input type="text" name="lname" class="form-control mt-3" required placeholder="Surname">
+          <input type="email" name="email" class="form-control mt-3" required placeholder="Email">
+          <input type="text" name="username" class="form-control mt-3" required placeholder="Username">
+          <input type="password" name="password" class="form-control mt-3" required placeholder="Password">
+          <input type="password" name="cpassword" class="form-control mt-3" required placeholder="Confirm Password">
+
+          <button type="submit" class="btn btn-danger mt-3">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</center>
+
+{%endblock%}

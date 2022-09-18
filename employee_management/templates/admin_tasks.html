@@ -1,0 +1,98 @@
+{%extends 'base.html'%}
+
+{%block title%}Manage Employee{%endblock%}
+
+{%block content%}
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-inner">
+        {%for slide in slide%}
+        {% if forloop.first %}
+        <div class="carousel-item active  ">
+            {% else %}
+            <div class="carousel-item col-lg ">
+                {% endif %}
+                <img src="{{slide.img.url}}" class="d-block w-100" alt="not found" height="500px">
+                <div class="carousel-caption d-none d-md-block">
+
+                    <button type="button" class="btn btn-primary">Primary</button>
+                    <button type="button" class="btn btn-secondary">Secondary</button>
+                    <button type="button" class="btn btn-success">Success</button>
+                    <button type="button" class="btn btn-danger">Danger</button>
+                    <button type="button" class="btn btn-warning">Warning</button>
+                    <button type="button" class="btn btn-info">Info</button>
+
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+
+    <hr style="color:blueviolet">
+    <div class="row">
+        <div class="col-lg mt-2">
+            <center>
+                <h2 style="color:brown;">All Employee Details</h2 </center>
+        </div>
+        <div class="col-lg mt-2">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" name="search" type="search" placeholder="Search Employee By Name"
+                    aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+
+    <hr style="color:blueviolet">
+    <div class="container">
+
+        <div class="row mt-2">
+            {% for x in emp %}
+            <div class="col-sm-6">
+                <div class="card  text-bg-success mb-3 text-dark">
+                    <h5 class="card-header">Name: {{x.name}} (<small>{{x.gender | capfirst}}</small>)</h5>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="container">
+                                <center>
+                                    <img src="{{x.image.url}}" width="180px" height="180px"
+                                        class="rounded float-start mt-2 text-center" alt="nature">
+                                </center>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body ">
+                                <h5 class="card-title">Highest Education: {{x.edu}}</h5>
+                                <p class="card-text">
+                                <h6> Expected Salary: {{x.exsalary}}Rs</h6>
+                                <h6>Age:{{x.age}} Years</h6>
+                                <h6>Programming Languages: {{x.prol}}</h6>
+                                </p>
+                                <a href="edit/{{x.id}}" class="btn btn-info">Edit</a>
+                                <a href="delete/{{x.id}}" class="btn btn-danger">Delete</a>
+                                <a href="view/{{x.id}}" class="btn btn-secondary">View</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+           {%endfor%}
+        </div>
+
+    </div>
+    {%endblock%}
